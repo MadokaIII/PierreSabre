@@ -12,8 +12,16 @@ public class Humain {
 		this.argent = argent;
 	}
 
+	public String getNom() {
+		return nom;
+	}
+
+	public int getArgent() {
+		return argent;
+	}
+
 	public void parler(String texte) {
-		System.out.println("(" + nom + ") : " + "« " + texte + " »");
+		System.out.println("(" + nom + ") - " + texte);
 	}
 
 	public void direBonjour() {
@@ -37,7 +45,8 @@ public class Humain {
 			parler("J'ai " + argent + " sous en poche. Je vais pouvoir m'offrir " + bien + " à " + prix + " sous.");
 			perdreArgent(prix);
 		} else {
-			parler("Je n'ai plus que " + argent + " sous en poche. Je ne peux même pas m'offrir " + bien + " à " + prix + " sous.");
+			parler("Je n'ai plus que " + argent + " sous en poche. Je ne peux même pas m'offrir " + bien + " à " + prix
+					+ " sous.");
 		}
 	}
 

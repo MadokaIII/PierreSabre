@@ -6,14 +6,14 @@ public class Commercant extends Humain {
 		super(nom, "thé", argent);
 	}
 
-	public void seFaireExtorquer() {
+	public int seFaireExtorquer() {
 		parler("J’ai tout perdu! Le monde est trop injuste...");
-		argent = 0;
+		return argent;
 	}
 	
 	public void recevoir(int argent) {
 		parler(argent + " sous ! Je te remercie généreux donateur!");
-		this.argent += argent;
+		gagnerArgent(argent);
 	}
 	
 }
