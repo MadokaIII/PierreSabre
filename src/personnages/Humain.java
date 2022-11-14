@@ -6,7 +6,7 @@ public class Humain {
 	private String boisson;
 	private int argent;
 	protected int nbConnaissance = 0;
-	protected Humain[] memoire = new Humain[3];
+	protected Humain[] memoire = new Humain[30];
 
 	public Humain(String nom, String boisson, int argent) {
 		this.nom = nom;
@@ -53,7 +53,7 @@ public class Humain {
 	}
 	
 	private void memoriser(Humain humain) {
-		if (nbConnaissance == 3) {
+		if (nbConnaissance == 30) {
 			for (int i = 1; i < nbConnaissance; i++) {
 				memoire[i-1] = memoire[i];
 			}
