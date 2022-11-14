@@ -2,9 +2,11 @@ package personnages;
 
 public class Humain {
 
-	String nom;
-	String boisson;
-	int argent;
+	private String nom;
+	private String boisson;
+	private int argent;
+	protected int nbConnaissance = 0;
+	protected Humain[] memoire = new Humain[3];
 
 	public Humain(String nom, String boisson, int argent) {
 		this.nom = nom;
@@ -32,11 +34,11 @@ public class Humain {
 		parler("Mmmm, un bon verre de " + boisson + " ! GLOUPS !");
 	}
 
-	public void gagnerArgent(int gain) {
+	protected void gagnerArgent(int gain) {
 		argent += gain;
 	}
 
-	public void perdreArgent(int perte) {
+	protected void perdreArgent(int perte) {
 		argent -= perte;
 	}
 
@@ -49,5 +51,41 @@ public class Humain {
 					+ " sous.");
 		}
 	}
-
+	
+	private void memoriser(Humain humain) {
+		if (nbConnaissance == 3) {
+			for (int i = 1; i < nbConnaissance; i++) {
+				memoire[i-1] = memoire[i];
+			}
+			memoire[nbConnaissance-1] = humain;
+		} else {
+			memoire[nbConnaissance] = humain;
+			nbConnaissance++;
+		}
+	}
+	
+	private void repondre(Humain humain) {
+		direBonjour();
+		memoriser(humain);
+	}
+	
+	public void faireConnaissanceAvec(Humain autreHumain) {
+		direBonjour();
+		autreHumain.repondre(this);
+		memoriser(autreHumain);
+	}
+	
+	public void listerConnaissance() {
+		StringBuilder texte = new StringBuilder();
+		texte.append("Je connais beaucoup de monde dont : ");
+		for (int i = 0; i < nbConnaissance; i++) {
+			if (i == nbConnaissance-1) {
+				texte.append(memoire[i].getNom()+".");
+			} else {
+				texte.append(memoire[i].getNom()+", ");
+			}
+		}
+		parler(texte.toString());
+	}
+	
 }
