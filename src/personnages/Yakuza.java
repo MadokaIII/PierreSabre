@@ -12,7 +12,7 @@ public class Yakuza extends Humain {
 	public Yakuza(String nom, String boisson, int argent, String clan) {
 		super(nom, boisson, argent);
 		this.clan = clan;
-		this.reputation = 4;
+		this.reputation = 1;
 	}
 
 	public void extorquer(Commercant victime) {
